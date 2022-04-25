@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(ITRI_project)
+project(itri_project)
 
 
 find_package(catkin REQUIRED COMPONENTS
@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf_conversions
   eigen_conversions
   message_filters
+  pcl_conversions
 )
 
 
@@ -43,3 +44,8 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_executable(pointcloud_merge src/pointcloud_merge.cpp)
 target_link_libraries(pointcloud_merge ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
+add_executable(L515_merge src/L515_merge.cpp)
+target_link_libraries(L515_merge ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
+add_executable(icp src/icp.cpp)
+target_link_libraries(icp ${catkin_LIBRARIES} ${PCL_LIBRARIES})

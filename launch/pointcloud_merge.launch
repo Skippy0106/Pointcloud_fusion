@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="itri_project" name="pointcloud_merge" type="pointcloud_merge" output="screen"/>
+</launch>
