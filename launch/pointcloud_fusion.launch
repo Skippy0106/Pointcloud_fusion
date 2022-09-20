@@ -1,0 +1,4 @@
+<launch>
+	<rosparam command="load" file="$(find pointcloud_fusion)/config/extrinsic_calibration.yaml" />
+	<node pkg="pointcloud_fusion" name="pointcloud_merge_new" type="pointcloud_merge_new" output="screen"/>
+</launch>

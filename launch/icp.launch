@@ -1,3 +1,0 @@
-<launch>
-	<node pkg="itri_project" name="icp" type="icp" output="screen"/>
-</launch>

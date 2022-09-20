@@ -1,3 +1,0 @@
-<launch>
-	<node pkg="itri_project" name="L515_merge" type="L515_merge" output="screen"/>
-</launch>

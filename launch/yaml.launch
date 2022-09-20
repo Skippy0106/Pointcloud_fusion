@@ -1,0 +1,8 @@
+<launch>
+	<arg name="path" default="/home/ncrl/catkin_ws/src/pointcloud_fusion/bag/" />
+	<arg name="file_1" default="extrinsic_cam1" />
+	<arg name="file_2" default="extrinsic_cam2" />
+	<node pkg="rosbag" type="play" name="player1" args="--clock $(arg path)$(arg file_1).bag"/>
+	<node pkg="rosbag" type="play" name="player2" args="--clock $(arg path)$(arg file_2).bag"/>
+	<node pkg="pointcloud_fusion" name="extrinsic_yaml" type="extrinsic_yaml" output="screen"/>
+</launch>

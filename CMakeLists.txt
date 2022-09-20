@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(itri_project)
+project(pointcloud_fusion)
 
 
 find_package(catkin REQUIRED COMPONENTS
@@ -37,15 +37,20 @@ include_directories(
 
 find_package(Eigen3 REQUIRED)
 find_package(PCL REQUIRED)
+FIND_LIBRARY(YAML_CPP_LIBRARIES yaml-cpp)
+if(NOT YAML_CPP_LIBRARIES)
+  # If yaml-cpp not found in the system, try finding it as a user CMake-generated project
+  FIND_PACKAGE(yaml-cpp REQUIRED)
+  INCLUDE_DIRECTORIES(${YAML_CPP_INCLUDE_DIRS})
+endif(NOT YAML_CPP_LIBRARIES)
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 link_directories(${PCL_LIBRARY_DIRS})
-add_executable(pointcloud_merge src/pointcloud_merge.cpp)
-target_link_libraries(pointcloud_merge ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-add_executable(L515_merge src/L515_merge.cpp)
-target_link_libraries(L515_merge ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+add_executable(pointcloud_merge_new src/pointcloud_merge_new.cpp)
+target_link_libraries(pointcloud_merge_new ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-add_executable(icp src/icp.cpp)
-target_link_libraries(icp ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+add_executable(extrinsic_yaml src/extrinsic_yaml.cpp)
+target_link_libraries(extrinsic_yaml ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${YAML_CPP_LIBRARIES})
+
